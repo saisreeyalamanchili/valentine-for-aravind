@@ -1,214 +1,442 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Mr. AK ♥️</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Mr. AK ♥️</title>
 
-<style>
-body {
-  margin:0;
-  font-family: system-ui;
-  background: radial-gradient(circle at top, #1a0f14, #050305);
-  color:#f6e7ea;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  text-align:center;
-  overflow:hidden;
-}
+  <style>
+    :root{
+      --bg1:#0b0608;
+      --bg2:#1a0f14;
+      --glass: rgba(255,255,255,0.06);
+      --stroke: rgba(255,255,255,0.10);
+      --text:#f6e7ea;
+      --muted: rgba(246,231,234,0.78);
+      --pink:#ff5f87;
+      --pink2:#ff3d6a;
+      --btn2:#2a2a2a;
+    }
 
-.card {
-  max-width:420px;
-  padding:28px;
-  background:rgba(255,255,255,0.05);
-  border-radius:18px;
-  backdrop-filter:blur(12px);
-  box-shadow:0 0 40px rgba(255,80,120,0.25);
-  animation:fade .5s ease;
-}
+    * { box-sizing: border-box; }
 
-button {
-  margin:8px;
-  padding:12px 20px;
-  border:none;
-  border-radius:30px;
-  background:#ff5f87;
-  color:white;
-  font-size:15px;
-  cursor:pointer;
-  transition:.2s;
-}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      height: 100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      background:
+        radial-gradient(900px 500px at 20% 15%, rgba(255,95,135,0.22), transparent 55%),
+        radial-gradient(700px 450px at 85% 30%, rgba(255,95,135,0.14), transparent 55%),
+        radial-gradient(circle at top, var(--bg2), var(--bg1));
+      text-align:center;
+      padding: 18px;
+    }
 
-button:hover {
-  transform:scale(1.08);
-  background:#ff3d6a;
-}
+    .card{
+      width: min(460px, 92vw);
+      padding: 26px 22px;
+      border-radius: 18px;
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.45);
+      animation: fadeIn .45s ease;
+      position: relative;
+    }
 
-.secondary {
-  background:#333;
-}
+    h1,h2,h3{
+      margin: 0 0 10px 0;
+      font-weight: 700;
+      letter-spacing: .2px;
+    }
 
-.hidden { display:none; }
+    p{
+      margin: 10px 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15.5px;
+    }
 
-#heart {
-  font-size:60px;
-  cursor:pointer;
-  transition:.2s;
-}
+    .btnRow{
+      margin-top: 16px;
+      display:flex;
+      gap: 10px;
+      justify-content:center;
+      flex-wrap: wrap;
+      position: relative;
+      min-height: 56px;
+    }
 
-@keyframes fade {
-  from {opacity:0; transform:translateY(15px);}
-  to {opacity:1; transform:translateY(0);}
-}
-</style>
+    button{
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, box-shadow .18s ease, opacity .18s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .primary{
+      background: linear-gradient(135deg, var(--pink), var(--pink2));
+      color: white;
+      box-shadow: 0 10px 22px rgba(255,95,135,0.25);
+    }
+    .primary:hover{ transform: scale(1.06); }
+
+    .secondary{
+      background: rgba(255,255,255,0.10);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+    .secondary:hover{ transform: scale(1.04); }
+
+    .hint{
+      margin-top: 14px;
+      min-height: 22px;
+      font-size: 14px;
+      color: rgba(246,231,234,0.85);
+      opacity: .95;
+    }
+
+    .hidden{ display:none; }
+
+    /* Tap Heart */
+    #heartTap{
+      font-size: 56px;
+      margin: 12px auto 6px;
+      width: 120px;
+      height: 120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      cursor: pointer;
+      transition: transform .14s ease;
+      user-select:none;
+    }
+
+    .subtle{
+      font-size: 13.5px;
+      color: rgba(246,231,234,0.72);
+      margin-top: 6px;
+    }
+
+    .choiceGrid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .choiceBtn{
+      width: 100%;
+      padding: 13px 16px;
+      border-radius: 16px;
+      text-align:left;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--text);
+    }
+    .choiceBtn:hover{ transform: translateY(-1px); background: rgba(255,255,255,0.10); }
+
+    /* Floating hearts for final screen */
+    .floatHeart{
+      position: fixed;
+      left: 0;
+      top: 0;
+      font-size: 18px;
+      opacity: 0.0;
+      pointer-events: none;
+      animation: rise 3.8s linear forwards;
+      filter: drop-shadow(0 8px 10px rgba(0,0,0,0.35));
+      z-index: 9999;
+    }
+
+    @keyframes rise{
+      0%   { transform: translateY(0) scale(0.95); opacity: 0.0; }
+      10%  { opacity: 0.85; }
+      100% { transform: translateY(-120vh) scale(1.15); opacity: 0.0; }
+    }
+
+    @keyframes fadeIn{
+      from{ opacity:0; transform: translateY(14px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+
+    .divider{
+      height: 1px;
+      background: rgba(255,255,255,0.10);
+      margin: 14px 0;
+    }
+
+    #countdown{
+      font-size: 18px;
+      margin: 10px 0 0;
+      color: rgba(246,231,234,0.92);
+      letter-spacing: .5px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- PROPOSAL -->
-<div class="card" id="proposal">
-<h2>Will you be my Valentine, Mr. AK? ♥️</h2>
+  <!-- PROPOSAL -->
+  <div class="card" id="screen-proposal">
+    <h2>Will you be my Valentine?</h2>
 
-<button onclick="startGame()">Yes 🤍</button>
-<button class="secondary" id="noBtn">No 😌🙄</button>
+    <p>
+      Mr. AK… I don’t always show everything I feel right away.<br><br>
+      But you’ve been on my mind in the quiet moments — and I keep catching myself smiling for no reason.<br>
+      I just wanted you to know… you matter to me. ♥️
+    </p>
 
-<p id="noMessage" style="margin-top:15px;opacity:.8;"></p>
-</div>
+    <div class="btnRow">
+      <button class="primary" id="yesBtn">Yes 🤍</button>
+      <button class="secondary" id="noBtn">No 😌🙄</button>
+    </div>
 
-<!-- HEART GAME -->
-<div class="card hidden" id="game">
-<h3>Tap to unlock 💗</h3>
-<p>Five taps… and you’ll see.</p>
-<div id="heart">💗</div>
-</div>
+    <div class="hint" id="noHint"></div>
+    <div class="subtle">Hint: Try clicking “No”… if you can 😉</div>
+  </div>
 
-<!-- LETTER -->
-<div class="card hidden" id="letter">
-<p>
-I may act shy sometimes…<br><br>
-But my heart isn’t.<br><br>
-I don’t rush… but I feel deeply.<br><br>
-With you, I feel safe.<br>
-Seen. Wanted.<br><br>
-And that means more than you know.
-</p>
+  <!-- GAME -->
+  <div class="card hidden" id="screen-game">
+    <h2>Tap to unlock</h2>
+    <p>5 taps &amp; you will see…</p>
 
-<button onclick="showCare()">Continue ♥️</button>
-</div>
+    <div id="heartTap" aria-label="Tap the heart">♥️</div>
+    <div class="subtle" id="tapCounter">0 / 5</div>
+  </div>
 
-<!-- CARE MESSAGE -->
-<div class="card hidden" id="care">
-<h3>So… February 14? 🤍</h3>
+  <!-- PLANS -->
+  <div class="card hidden" id="screen-plans">
+    <h2>So… Feb 14? 🤍</h2>
+    <p>Pick what feels nice (no pressure).</p>
 
-<p>
-Only when your eyes feel better, okay?<br><br>
-No rush. No pressure.<br>
-Your comfort means more to me than any plan ever could.<br><br>
-We’ll celebrate properly…<br>
-when you can see me clearly. ♥️
-</p>
+    <div class="choiceGrid">
+      <button class="choiceBtn" data-plan="Brunch/Lunch date 🥂🍽️">
+        🥂🍽️ <b>Brunch / Lunch date</b><br>
+        <span class="subtle">Simple, warm, and unhurried.</span>
+      </button>
 
-<button onclick="showFinal()">Heal first. I’ll be right here.</button>
-</div>
+      <button class="choiceBtn" data-plan="Cafe catch up in the evening ☕🌙">
+        ☕🌙 <b>Cafe catch up in evening</b><br>
+        <span class="subtle">Coffee + calm vibes + us.</span>
+      </button>
+    </div>
+  </div>
 
-<!-- FINAL -->
-<div class="card hidden" id="final">
+  <!-- GIFTS -->
+  <div class="card hidden" id="screen-gifts">
+    <h2>What are you looking for? 😉</h2>
+    <p>Choose carefully, Mr. AK…</p>
 
-<h3>Take a screenshot and send it to me 😉</h3>
+    <div class="choiceGrid">
+      <button class="choiceBtn" data-gift="Unlimited hugs 🤗">
+        🤗 <b>Unlimited hugs</b><br>
+        <span class="subtle">The safe choice (but I like it).</span>
+      </button>
 
-<p style="margin-top:18px;">
-Happy Valentine’s, Mr. AK ♥️<br><br>
-Can’t wait to meet you soon! 🥰
-</p>
+      <button class="choiceBtn" data-gift="A few kisses 😘">
+        😘 <b>A few kisses</b><br>
+        <span class="subtle">Okayyy… bold.</span>
+      </button>
 
-<h2 id="countdown" style="margin:15px 0;"></h2>
+      <button class="choiceBtn" data-gift="Surprise me 💝">
+        💝 <b>Surprise me</b><br>
+        <span class="subtle">Careful what you unlock 😌</span>
+      </button>
+    </div>
+  </div>
 
-<p>
-With love,<br>
-Sree 🤍
-</p>
+  <!-- FINAL -->
+  <div class="card hidden" id="screen-final">
+    <h2 id="finalTitle">Send me the screenshot of what you chose ♥️</h2>
+    <p id="finalSummary"></p>
 
-</div>
+    <div class="divider"></div>
+
+    <p style="font-size:16px; color: rgba(246,231,234,0.92);">
+      Happy Valentine’s, Mr. AK ♥️<br><br>
+      Can’t wait to see you soon 🥰
+    </p>
+
+    <div id="countdown"></div>
+
+    <div class="divider"></div>
+
+    <p style="color: rgba(246,231,234,0.90);">
+      With love,<br>
+      Sree 🤍
+    </p>
+  </div>
 
 <script>
+  // Screens
+  const sProposal = document.getElementById('screen-proposal');
+  const sGame     = document.getElementById('screen-game');
+  const sPlans    = document.getElementById('screen-plans');
+  const sGifts    = document.getElementById('screen-gifts');
+  const sFinal    = document.getElementById('screen-final');
 
-/* ---------- NO BUTTON TEASE ---------- */
+  const yesBtn  = document.getElementById('yesBtn');
+  const noBtn   = document.getElementById('noBtn');
+  const noHint  = document.getElementById('noHint');
 
-const noLines = [
-"Mr. AK… behave.",
-"That’s not very Valentine-y of you.",
-"I’m giving you a chance to rethink that.",
-"You really want me to convince you?",
-"Okay fine… try again. Properly."
-];
+  // No-button messages (funny + intimate)
+  const noLines = [
+    "Mr. AK… behave. 😌",
+    "Hmm… I don’t think that’s the right answer 🙄",
+    "Try again… but with feelings this time 😏",
+    "You do know there’s a better option right there… right? 😉",
+    "Okay okay… I’ll pretend your finger slipped 😌"
+  ];
+  let noIndex = 0;
 
-let noIndex = 0;
-const noBtn = document.getElementById("noBtn");
-const msg = document.getElementById("noMessage");
+  // Make "No" escape + show hint line each attempt
+  function moveNoButton() {
+    // Move within the proposal card area (keeps it playful, not chaotic across screen)
+    const rect = sProposal.getBoundingClientRect();
+    const maxX = rect.width - 140; // approx button width
+    const maxY = 110;              // keep within button area
+    const x = (Math.random() * maxX) - (maxX / 2);
+    const y = (Math.random() * maxY) - (maxY / 2);
 
-noBtn.onclick = () => {
-msg.innerText = noLines[noIndex];
-noIndex = (noIndex + 1) % noLines.length;
+    noBtn.style.position = 'relative';
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  }
 
-noBtn.style.transform =
-`translate(${Math.random()*120-60}px,${Math.random()*60-30}px)`;
-};
+  noBtn.addEventListener('click', () => {
+    noHint.textContent = noLines[noIndex];
+    noIndex = (noIndex + 1) % noLines.length;
+    moveNoButton();
+  });
+  noBtn.addEventListener('mouseenter', moveNoButton);
+  noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNoButton(); }, {passive:false});
 
-/* ---------- FLOW ---------- */
+  // Flow: Proposal -> Game
+  yesBtn.addEventListener('click', () => {
+    sProposal.classList.add('hidden');
+    sGame.classList.remove('hidden');
+  });
 
-function startGame(){
-hide("proposal");
-show("game");
-}
+  // Game: 5 taps with heart scaling bigger each tap
+  const heartTap = document.getElementById('heartTap');
+  const tapCounter = document.getElementById('tapCounter');
+  let taps = 0;
+  let heartScale = 1.0;
 
-let taps = 0;
-const heart = document.getElementById("heart");
+  heartTap.addEventListener('click', () => {
+    taps++;
+    heartScale += 0.08; // grows slightly per tap
+    heartTap.style.transform = `scale(${heartScale})`;
 
-heart.onclick = () => {
-taps++;
-heart.style.transform="scale(1.3)";
-setTimeout(()=>heart.style.transform="scale(1)",150);
+    tapCounter.textContent = `${Math.min(taps,5)} / 5`;
 
-if(taps>=5){
-hide("game");
-show("letter");
-}
-};
+    // small bounce feedback
+    setTimeout(() => {
+      heartTap.style.transform = `scale(${heartScale - 0.03})`;
+      setTimeout(() => heartTap.style.transform = `scale(${heartScale})`, 70);
+    }, 70);
 
-function showCare(){
-hide("letter");
-show("care");
-}
+    if (taps >= 5) {
+      setTimeout(() => {
+        sGame.classList.add('hidden');
+        sPlans.classList.remove('hidden');
+      }, 220);
+    }
+  });
 
-function showFinal(){
-hide("care");
-show("final");
-startCountdown();
-}
+  // Plans -> Gifts
+  let chosenPlan = "";
+  document.querySelectorAll('[data-plan]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      chosenPlan = btn.getAttribute('data-plan');
+      sPlans.classList.add('hidden');
+      sGifts.classList.remove('hidden');
+    });
+  });
 
-function hide(id){ document.getElementById(id).classList.add("hidden"); }
-function show(id){ document.getElementById(id).classList.remove("hidden"); }
+  // Gifts -> Final
+  let chosenGift = "";
+  const finalSummary = document.getElementById('finalSummary');
+  document.querySelectorAll('[data-gift]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      chosenGift = btn.getAttribute('data-gift');
 
-/* ---------- COUNTDOWN ---------- */
+      sGifts.classList.add('hidden');
+      sFinal.classList.remove('hidden');
 
-function startCountdown(){
-const target = new Date("Feb 14, 2026 00:00:00").getTime();
+      finalSummary.innerHTML =
+        `You chose: <b>${chosenPlan}</b><br>` +
+        `And you’re looking for: <b>${chosenGift}</b><br><br>` +
+        `Now screenshot this and send it to me 😌♥️`;
 
-setInterval(()=>{
-const now = new Date().getTime();
-const diff = target - now;
+      startFloatingHearts();
+      startCountdown();
+    });
+  });
 
-const d = Math.floor(diff/(1000*60*60*24));
-const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-const m = Math.floor((diff%(1000*60*60))/(1000*60));
-const s = Math.floor((diff%(1000*60))/1000);
+  // Floating hearts (final screen)
+  let heartsInterval = null;
+  function startFloatingHearts(){
+    if (heartsInterval) return;
+    const hearts = ["♥️","❤️","💗","💖","💕","💝"];
+    heartsInterval = setInterval(() => {
+      const h = document.createElement('div');
+      h.className = 'floatHeart';
+      h.textContent = hearts[Math.floor(Math.random()*hearts.length)];
+      h.style.left = (Math.random()*100) + "vw";
+      h.style.bottom = "-10vh";
+      h.style.opacity = "0";
+      h.style.fontSize = (16 + Math.random()*22) + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 4000);
+    }, 420);
+  }
 
-document.getElementById("countdown").innerText =
-`${d}d ${h}h ${m}m ${s}s`;
-},1000);
-}
+  // Countdown to Valentine's Day (Feb 14, 2026)
+  const countdownEl = document.getElementById('countdown');
+  let countdownTimer = null;
 
+  function startCountdown(){
+    if (countdownTimer) return;
+
+    // Uses the viewer's device timezone (fine for your case in India)
+    const target = new Date("Feb 14, 2026 00:00:00").getTime();
+
+    function tick(){
+      const now = Date.now();
+      let diff = target - now;
+
+      if (diff <= 0) {
+        countdownEl.textContent = "It’s Valentine’s Day ♥️";
+        return;
+      }
+
+      const d = Math.floor(diff/(1000*60*60*24));
+      diff %= (1000*60*60*24);
+      const h = Math.floor(diff/(1000*60*60));
+      diff %= (1000*60*60);
+      const m = Math.floor(diff/(1000*60));
+      diff %= (1000*60);
+      const s = Math.floor(diff/1000);
+
+      countdownEl.textContent = `Countdown: ${d}d ${h}h ${m}m ${s}s`;
+    }
+
+    tick();
+    countdownTimer = setInterval(tick, 1000);
+  }
 </script>
 
 </body>
