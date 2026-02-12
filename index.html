@@ -1,226 +1,214 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>For Mr. AK ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      text-align: center;
-    }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Mr. AK ♥️</title>
 
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-      max-width: 420px;
-      animation: fadeIn 0.6s ease-in-out;
-      position: relative;
-    }
+<style>
+body {
+  margin:0;
+  font-family: system-ui;
+  background: radial-gradient(circle at top, #1a0f14, #050305);
+  color:#f6e7ea;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+  overflow:hidden;
+}
 
-    h1, h2 { color: #5a2a3b; }
+.card {
+  max-width:420px;
+  padding:28px;
+  background:rgba(255,255,255,0.05);
+  border-radius:18px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 0 40px rgba(255,80,120,0.25);
+  animation:fade .5s ease;
+}
 
-    p { color: #6b3e4f; }
+button {
+  margin:8px;
+  padding:12px 20px;
+  border:none;
+  border-radius:30px;
+  background:#ff5f87;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 25px;
-      background-color: #ff4d6d;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+button:hover {
+  transform:scale(1.08);
+  background:#ff3d6a;
+}
 
-    button:hover {
-      background-color: #e63950;
-      transform: scale(1.05);
-    }
+.secondary {
+  background:#333;
+}
 
-    .option-btn {
-      background-color: #ff85a2;
-    }
+.hidden { display:none; }
 
-    .hidden { display: none; }
+#heart {
+  font-size:60px;
+  cursor:pointer;
+  transition:.2s;
+}
 
-    #heartTap {
-      font-size: 60px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .floating-heart {
-      position: absolute;
-      font-size: 20px;
-      animation: floatUp 4s linear infinite;
-      opacity: 0.7;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-
-    @keyframes floatUp {
-      from { transform: translateY(100vh); opacity: 1;}
-      to { transform: translateY(-10vh); opacity: 0;}
-    }
-  </style>
+@keyframes fade {
+  from {opacity:0; transform:translateY(15px);}
+  to {opacity:1; transform:translateY(0);}
+}
+</style>
 </head>
 
 <body>
 
-<!-- Proposal -->
+<!-- PROPOSAL -->
 <div class="card" id="proposal">
-  <h1>Mr. AK ❤️</h1>
-  <p>Will you be my Valentine?</p>
-  <button onclick="startGame()">Yes 💖</button>
-  <button id="noBtn">No</button>
+<h2>Will you be my Valentine, Mr. AK? ♥️</h2>
+
+<button onclick="startGame()">Yes 🤍</button>
+<button class="secondary" id="noBtn">No 😌🙄</button>
+
+<p id="noMessage" style="margin-top:15px;opacity:.8;"></p>
 </div>
 
-<!-- Heart Game -->
+<!-- HEART GAME -->
 <div class="card hidden" id="game">
-  <h2>Catch My Heart 💗</h2>
-  <p>Tap 5 times to unlock what's inside...</p>
-  <div id="heartTap">💗</div>
+<h3>Tap to unlock 💗</h3>
+<p>Five taps… and you’ll see.</p>
+<div id="heart">💗</div>
 </div>
 
-<!-- Love Letter -->
+<!-- LETTER -->
 <div class="card hidden" id="letter">
-  <h2>For You 💌</h2>
-  <p>
-    I may act shy sometimes…<br><br>
-    But my heart isn’t.<br><br>
-    I don’t rush… but I feel deeply.<br><br>
-    With you, I feel safe.<br>
-    Seen.<br>
-    Wanted.<br><br>
-    And that means more than you know.
-  </p>
-  <button onclick="showDate()">Continue ❤️</button>
+<p>
+I may act shy sometimes…<br><br>
+But my heart isn’t.<br><br>
+I don’t rush… but I feel deeply.<br><br>
+With you, I feel safe.<br>
+Seen. Wanted.<br><br>
+And that means more than you know.
+</p>
+
+<button onclick="showCare()">Continue ♥️</button>
 </div>
 
-<!-- Date Choice -->
-<div class="card hidden" id="date">
-  <h2>So… February 14? 💘</h2>
-  <button class="option-btn" onclick="chooseDate('movie')">🎬 Romantic Movie Date</button>
-  <button class="option-btn" onclick="chooseDate('brunch')">🥂 Brunch / Lunch Catch Up</button>
+<!-- CARE MESSAGE -->
+<div class="card hidden" id="care">
+<h3>So… February 14? 🤍</h3>
+
+<p>
+Only when your eyes feel better, okay?<br><br>
+No rush. No pressure.<br>
+Your comfort means more to me than any plan ever could.<br><br>
+We’ll celebrate properly…<br>
+when you can see me clearly. ♥️
+</p>
+
+<button onclick="showFinal()">Heal first. I’ll be right here.</button>
 </div>
 
-<!-- Gift Choice -->
-<div class="card hidden" id="gift">
-  <h2>Your Valentine Privilege 💝</h2>
-  <button class="option-btn" onclick="chooseGift('hugs')">🤗 Unlimited Hugs</button>
-  <button class="option-btn" onclick="chooseGift('kisses')">😘 A Few Kisses</button>
-  <button class="option-btn" onclick="chooseGift('surprise')">💝 Surprise Me</button>
-</div>
-
-<!-- Final -->
+<!-- FINAL -->
 <div class="card hidden" id="final">
-  <h2 id="finalText"></h2>
-  <p>
-    February 14 is officially ours ❤️<br><br>
-    Screenshot this and send it to me.<br>
-    I want proof of your choice 😉
-  </p>
+
+<h3>Take a screenshot and send it to me 😉</h3>
+
+<p style="margin-top:18px;">
+Happy Valentine’s, Mr. AK ♥️<br><br>
+Can’t wait to meet you soon! 🥰
+</p>
+
+<h2 id="countdown" style="margin:15px 0;"></h2>
+
+<p>
+With love,<br>
+Sree 🤍
+</p>
+
 </div>
 
 <script>
+
+/* ---------- NO BUTTON TEASE ---------- */
+
+const noLines = [
+"Mr. AK… behave.",
+"That’s not very Valentine-y of you.",
+"I’m giving you a chance to rethink that.",
+"You really want me to convince you?",
+"Okay fine… try again. Properly."
+];
+
+let noIndex = 0;
 const noBtn = document.getElementById("noBtn");
+const msg = document.getElementById("noMessage");
 
-noBtn.addEventListener("mouseover", () => {
-  const x = Math.random() * (window.innerWidth - 100);
-  const y = Math.random() * (window.innerHeight - 50);
-  noBtn.style.position = "absolute";
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-});
+noBtn.onclick = () => {
+msg.innerText = noLines[noIndex];
+noIndex = (noIndex + 1) % noLines.length;
 
-function startGame() {
-  document.getElementById("proposal").classList.add("hidden");
-  document.getElementById("game").classList.remove("hidden");
+noBtn.style.transform =
+`translate(${Math.random()*120-60}px,${Math.random()*60-30}px)`;
+};
+
+/* ---------- FLOW ---------- */
+
+function startGame(){
+hide("proposal");
+show("game");
 }
 
 let taps = 0;
-const heart = document.getElementById("heartTap");
+const heart = document.getElementById("heart");
 
-heart.addEventListener("click", () => {
-  taps++;
-  heart.style.transform = "scale(1.3)";
-  setTimeout(() => heart.style.transform = "scale(1)", 150);
+heart.onclick = () => {
+taps++;
+heart.style.transform="scale(1.3)";
+setTimeout(()=>heart.style.transform="scale(1)",150);
 
-  if (taps >= 5) {
-    document.getElementById("game").classList.add("hidden");
-    document.getElementById("letter").classList.remove("hidden");
-  }
-});
+if(taps>=5){
+hide("game");
+show("letter");
+}
+};
 
-function showDate() {
-  document.getElementById("letter").classList.add("hidden");
-  document.getElementById("date").classList.remove("hidden");
+function showCare(){
+hide("letter");
+show("care");
 }
 
-let chosenDate = "";
-
-function chooseDate(option) {
-  chosenDate = option;
-  document.getElementById("date").classList.add("hidden");
-  document.getElementById("gift").classList.remove("hidden");
+function showFinal(){
+hide("care");
+show("final");
+startCountdown();
 }
 
-function chooseGift(gift) {
-  document.getElementById("gift").classList.add("hidden");
-  document.getElementById("final").classList.remove("hidden");
+function hide(id){ document.getElementById(id).classList.add("hidden"); }
+function show(id){ document.getElementById(id).classList.remove("hidden"); }
 
-  let dateText = chosenDate === "movie" ? "a romantic movie date 🎬" : "a cute brunch/lunch catch up 🥂";
+/* ---------- COUNTDOWN ---------- */
 
-  let giftText = "";
-  if (gift === "hugs") giftText = "unlimited hugs 🤗 — gentle soul.";
-  if (gift === "kisses") giftText = "a few kisses 😘 — a little bold, I see you.";
-  if (gift === "surprise") giftText = "a surprise 💝 — careful what you unlock, Mr. AK.";
+function startCountdown(){
+const target = new Date("Feb 14, 2026 00:00:00").getTime();
 
-  document.getElementById("finalText").innerText =
-    "So it’s " + dateText + " with " + giftText;
-  
-  launchConfetti();
-  createFloatingHearts();
+setInterval(()=>{
+const now = new Date().getTime();
+const diff = target - now;
+
+const d = Math.floor(diff/(1000*60*60*24));
+const h = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+const m = Math.floor((diff%(1000*60*60))/(1000*60));
+const s = Math.floor((diff%(1000*60))/1000);
+
+document.getElementById("countdown").innerText =
+`${d}d ${h}h ${m}m ${s}s`;
+},1000);
 }
 
-function launchConfetti() {
-  for (let i = 0; i < 50; i++) {
-    const confetti = document.createElement("div");
-    confetti.style.position = "absolute";
-    confetti.style.width = "8px";
-    confetti.style.height = "8px";
-    confetti.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);
-    confetti.style.top = Math.random() * window.innerHeight + "px";
-    confetti.style.left = Math.random() * window.innerWidth + "px";
-    confetti.style.opacity = 0.7;
-    confetti.style.borderRadius = "50%";
-    document.body.appendChild(confetti);
-  }
-}
-
-function createFloatingHearts() {
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("floating-heart");
-    heart.innerText = "❤️";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 4000);
-  }, 500);
-}
 </script>
 
 </body>
